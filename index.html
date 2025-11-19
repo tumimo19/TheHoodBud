@@ -5,58 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="format-detection" content="telephone=no">
     <meta name="theme-color" content="#000000">
-    
     <title>The Hood Bud - Brackenhurst</title>
     <meta name="description" content="Premium Cannabis Dispensary - Brackenhurst | The Hood Bud">
-    
+
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
     <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
         html { scroll-behavior: smooth; overscroll-behavior: none; }
-        body { 
-            font-family: 'Inter', sans-serif; 
-            margin: 0; 
-            overflow-x: hidden; 
-            -webkit-font-smoothing: antialiased;
-        }
-        h1, h2, h3, h4, h5, .font-display { 
-            font-family: 'DM Serif Text', serif; 
-            letter-spacing: -0.5px; 
-        }
+        body { font-family: 'Inter', sans-serif; margin: 0; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+        h1,h2,h3,h4,h5,.font-display { font-family: 'DM Serif Text', serif; letter-spacing: -0.5px; }
 
-        .hero-section { 
-            height: 100dvh; 
-            min-height: 600px; 
-        }
-
-        .hero-bg {
-            background-image: linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.45)), 
-                             url('IMG_3603.JPG');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
+        .hero-section { height: 100dvh; min-height: 600px; }
 
         nav, #mobile-menu { background-color: #000 !important; }
-
         ::-webkit-scrollbar { width: 0; }
         body { -ms-overflow-style: none; scrollbar-width: none; }
         * { -webkit-tap-highlight-color: transparent; }
 
-        /* THE FIX - BRACKENHURST NOW FITS ON ALL PHONES */
         .hero-title {
-            font-size: clamp(2.8rem, 12vw, 9rem);  /* Scales perfectly from tiny to huge screens */
+            font-size: clamp(2.8rem, 12vw, 9rem);
             line-height: 0.9;
-            word-break: keep-all;
-            overflow-wrap: normal;
         }
     </style>
 </head>
 <body class="bg-gray-50 text-gray-800">
 
-    <!-- Navbar (unchanged) -->
+    <!-- Navbar -->
     <nav class="fixed top-0 left-0 right-0 bg-black text-white z-50 shadow-2xl">
         <div class="max-w-7xl mx-auto px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
@@ -84,11 +60,17 @@
         </div>
     </nav>
 
-    <!-- HERO - FIXED FOR MOBILE -->
-    <section id="home" class="hero-section relative flex items-center justify-center bg-cover bg-center hero-bg">
+    <!-- HERO - NOW USING <img> TAG = 100% VERCEL-PROOF -->
+    <section id="home" class="hero-section relative flex items-center justify-center overflow-hidden">
+        <img 
+            src="IMG_3603.JPG" 
+            alt="The Hood Bud Brackenhurst Storefront" 
+            class="absolute inset-0 w-full h-full object-cover -z-10"
+            loading="eager"
+        />
         <div class="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/40"></div>
+        
         <div class="relative text-center text-white px-6 max-w-4xl mx-auto z-10">
-            <!-- THIS IS THE FIXED TITLE -->
             <h1 class="hero-title font-display font-normal mb-6 tracking-tight leading-none">
                 BRACKENHURST
             </h1>
@@ -101,45 +83,36 @@
         </div>
     </section>
 
-    <!-- Rest of your site (Products, Gallery, Location, Footer) - 100% unchanged -->
     <!-- Products -->
     <section id="products" class="py-20 sm:py-24 bg-gradient-to-b from-gray-50 to-white">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-4xl sm:text-5xl md:text-6xl font-display text-center mb-16 sm:mb-20 text-gray-800" data-aos="fade-up">
                 STORE PRODUCTS
             </h2>
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10 max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
                 <div class="group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="100">
-                    <div class="overflow-hidden">
-                        <img src="IMG_3721.jpg" alt="Premium Flower" class="w-full h-80 object-cover group-hover:scale-110 transition duration-700">
-                    </div>
+                    <img src="IMG_3721.jpg" alt="Premium Flower" class="w-full h-80 object-cover group-hover:scale-110 transition duration-700">
                     <div class="p-7 sm:p-8">
                         <h3 class="text-2xl sm:text-3xl font-display mb-3">Premium Flower</h3>
                         <p class="text-gray-600 leading-relaxed">Hand-trimmed, top-shelf strains. Exclusive drops & classics.</p>
                     </div>
                 </div>
                 <div class="group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="200">
-                    <div class="overflow-hidden">
-                        <img src="IMG_3651.jpg" alt="Edibles" class="w-full h-80 object-cover group-hover:scale-110 transition duration-700">
-                    </div>
+                    <img src="IMG_3651.jpg" alt="Edibles" class="w-full h-80 object-cover group-hover:scale-110 transition duration-700">
                     <div class="p-7 sm:p-8">
                         <h3 class="text-2xl sm:text-3xl font-display mb-3">Edibles</h3>
                         <p class="text-gray-600 leading-relaxed">Chocolates & gummies perfectly dosed, insanely delicious.</p>
                     </div>
                 </div>
                 <div class="group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="300">
-                    <div class="overflow-hidden">
-                        <img src="IMG_3671.jpg" alt="Vapes & Resins" class="w-full h-80 object-cover group-hover:scale-110 transition duration-700">
-                    </div>
+                    <img src="IMG_3671.jpg" alt="Vapes & Resins" class="w-full h-80 object-cover group-hover:scale-110 transition duration-700">
                     <div class="p-7 sm:p-8">
                         <h3 class="text-2xl sm:text-3xl font-display mb-3">Vapes & Resins</h3>
                         <p class="text-gray-600 leading-relaxed">Full-spectrum carts & disposables. Pure flavor, zero hassle.</p>
                     </div>
                 </div>
                 <div class="group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="400">
-                    <div class="overflow-hidden">
-                        <img src="IMG_3722.jpg" alt="Premium Pre-Rolls" class="w-full h-80 object-cover group-hover:scale-110 transition duration-700">
-                    </div>
+                    <img src="IMG_3722.jpg" alt="Premium Pre-Rolls" class="w-full h-80 object-cover group-hover:scale-110 transition duration-700">
                     <div class="p-7 sm:p-8">
                         <h3 class="text-2xl sm:text-3xl font-display mb-3">Premium Pre-Rolls</h3>
                         <p class="text-gray-600 leading-relaxed">Perfectly rolled, top-shelf flower. Infused options available.</p>
@@ -149,19 +122,19 @@
         </div>
     </section>
 
-    <!-- Gallery / Location / Footer - unchanged -->
-    <!-- (keeping the rest exactly as before - perfect on mobile already) -->
+    <!-- Gallery -->
     <section id="gallery" class="py-20 sm:py-24 bg-black">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-4xl sm:text-5xl md:text-6xl font-display text-center mb-16 sm:mb-20 text-white" data-aos="fade-up">SHOP GALLERY</h2>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-                <img src="IMG_3705.jpg" alt="Shop" class="rounded-xl object-cover w-full h-80 sm:h-96 shadow-2xl hover:scale-105 transition duration-500" data-aos="zoom-in" data-aos-delay="100">
-                <img src="IMG_3706.jpg" alt="Shop" class="rounded-xl object-cover w-full h-80 sm:h-96 shadow-2xl hover:scale-105 transition duration-500" data-aos="zoom-in" data-aos-delay="200">
-                <img src="IMG_3596.jpg" alt="Shop" class="rounded-xl object-cover w-full h-80 sm:h-96 shadow-2xl hover:scale-105 transition duration-500" data-aos="zoom-in" data-aos-delay="300">
+                <img src="IMG_3705.jpg" alt="Shop Interior" class="rounded-xl object-cover w-full h-80 sm:h-96 shadow-2xl hover:scale-105 transition duration-500" data-aos="zoom-in">
+                <img src="IMG_3706.jpg" alt="Shop Interior" class="rounded-xl object-cover w-full h-80 sm:h-96 shadow-2xl hover:scale-105 transition duration-500" data-aos="zoom-in">
+                <img src="IMG_3596.jpg" alt="Shop Interior" class="rounded-xl object-cover w-full h-80 sm:h-96 shadow-2xl hover:scale-105 transition duration-500" data-aos="zoom-in">
             </div>
         </div>
     </section>
 
+    <!-- Location -->
     <section id="location" class="py-20 sm:py-24 bg-gradient-to-b from-white to-gray-50">
         <div class="max-w-7xl mx-auto px-6">
             <h2 class="text-4xl sm:text-5xl md:text-6xl font-display text-center mb-16 sm:mb-20 text-gray-800" data-aos="fade-up">Find Us</h2>
@@ -172,7 +145,7 @@
                     <p class="text-xl text-gray-700 mb-8">Brackenhurst, Alberton</p>
                     <p class="text-lg text-gray-600">Mon–Sat: 8AM – 7PM</p>
                     <p class="text-lg text-gray-600 mb-10">Sun: 10AM – 2PM</p>
-                    <a href="https://www.google.com/maps/place/The+Hood+Bud" target="_blank" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-5 rounded-full text-lg font-semibold transition transform hover:scale-105 active:scale-95 shadow-xl">
+                    <a href="https://www.google.com/maps/place/The+Hood+Bud+-+Brackenhurst/@-26.3236402,28.096301,17z/data=!4m15!1m8!3m7!1s0x1e9504dbc2e9d805:0x7ca5cacfd77439db!2s94+Hennie+Alberts+St,+Brackenhurst,+Alberton,+1448!3b1!8m2!3d-26.3236402!4d28.096301!16s%2Fg%2F11j8lld12y!3m5!1s0x1e9505165a40add3:0xdf297a49701db286!8m2!3d-26.3236402!4d28.096301!16s%2Fg%2F11mltpfwwg?entry=ttu&g_ep=EgoyMDI1MTExNi4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="inline-block bg-emerald-600 hover:bg-emerald-700 text-white px-10 py-5 rounded-full text-lg font-semibold transition transform hover:scale-105 active:scale-95 shadow-xl">
                         Get Directions
                     </a>
                 </div>
@@ -183,6 +156,7 @@
         </div>
     </section>
 
+    <!-- Footer -->
     <footer class="bg-black text-gray-400 py-16">
         <div class="max-w-7xl mx-auto text-center px-6">
             <p class="text-4xl font-display text-white mb-4">BRACKENHURST</p>
@@ -194,12 +168,8 @@
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 1000, once: true, offset: 80, easing: 'ease-out-cubic' });
-        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+        document.getElementById('mobile-menu-btn').onclick = () => 
             document.getElementById('mobile-menu').classList.toggle('hidden');
-        });
-        document.querySelectorAll('#mobile-menu a').forEach(link => {
-            link.addEventListener('click', () => document.getElementById('mobile-menu').classList.add('hidden'));
-        });
     </script>
 </body>
 </html>
