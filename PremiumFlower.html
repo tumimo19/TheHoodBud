@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Flower • The Hood Bud - Brackenhurst</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1,h2,h3,h4,h5,.font-display { font-family: 'DM Serif Text', serif; letter-spacing: -0.5px; }
+        nav, #mobile-menu { background-color: #000 !important; }
+        * { -webkit-tap-highlight-color: transparent; }
+        .sticky { position: sticky; top: 5rem; z-index: 40; }
+        .no-results { display: none; }
+
+        /* Only added for active filter button */
+        .filter-active {
+            background-color: #065f46 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 bg-black text-white z-50 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center h-20">
+            <div class="text-3xl sm:text-4xl font-display font-medium text-emerald-500">THE HOOD BUD</div>
+            <div class="hidden md:flex space-x-8 lg:space-x-12">
+                <a href="index.html#home" class="font-medium hover:text-emerald-400 transition">Home</a>
+                <a href="index.html#products" class="font-medium hover:text-emerald-400 transition">Products</a>
+                <a href="index.html#gallery" class="font-medium hover:text-emerald-400 transition">Gallery</a>
+                <a href="index.html#location" class="font-medium hover:text-emerald-400 transition">Location</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-black border-t border-gray-900 px-4 pt-4 pb-6 space-y-3">
+            <a href="index.html#home" class="block px-4 py-3 text-lg font-medium hover:bg-gray-900 hover:text-emerald-400 rounded-lg transition">Home</a>
+            <a href="index.html#products" class="block px-4 py-3 text-lg font-medium hover:bg-gray-900 hover:text-emerald-400 rounded-lg transition">Products</a>
+            <a href="index.html#gallery" class="block px-4 py-3 text-lg font-medium hover:bg-gray-900 hover:text-emerald-400 rounded-lg transition">Gallery</a>
+            <a href="index.html#location" class="block px-4 py-3 text-lg font-medium hover:bg-gray-900 hover:text-emerald-400 rounded-lg transition">Location</a>
+        </div>
+    </nav>
+
+    <!-- HERO + SEARCH BAR -->
+    <section class="pt-32 pb-16 text-center bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-display mb-6">Premium Flower</h1>
+            <h1 class="text-xl text-gray-600 max-w-2xl mx-auto mb-10">Hand-selected, top-shelf strains. Grown with love, cured to perfection.</h1>
+
+            <!-- SEARCH BAR -->
+            <div class="max-w-2xl mx-auto relative">
+                <input 
+                    type="text" 
+                    id="strainSearch" 
+                    placeholder="Search strain name, effect, flavor..." 
+                    class="w-full px-6 py-5 pr-14 text-lg rounded-full border-2 border-gray-300 shadow-lg focus:outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-200 transition"
+                >
+                <div class="absolute right-5 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- FILTER BUTTONS -->
+            <div class="flex justify-center gap-4 mt-10 flex-wrap">
+                <button class="filter-btn filter-active px-8 py-4 rounded-full bg-emerald-700 text-white font-semibold text-lg shadow-lg transition hover:bg-emerald-800" data-filter="all">All Strains</button>
+                <button class="filter-btn px-8 py-4 rounded-full bg-gray-200 text-gray-800 font-semibold text-lg shadow-lg transition hover:bg-emerald-700 hover:text-white" data-filter="indoor">Indoor Grown</button>
+                <button class="filter-btn px-8 py-4 rounded-full bg-gray-200 text-gray-800 font-semibold text-lg shadow-lg transition hover:bg-emerald-700 hover:text-white" data-filter="greenhouse">Greenhouse & Outdoor</button>
+            </div>
+
+            <!-- No results message -->
+            <p id="noResults" class="mt-10 text-2xl text-gray-500 no-results">No strains found...</p>
+        </div>
+    </section>
+
+    <!-- STICKY CATEGORY TABS -->
+    <div class="sticky bg-gray-50 border-b border-gray-200 shadow-md">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-6 py-5 text-lg font-medium">
+                <h1 class="">IN-STORE | STOCKS ARE LIMITED.</h1>
+            </div>
+        </div>
+    </div>
+
+    <section class="py-16 max-w-7xl mx-auto px-6 space-y-24">
+
+        <!-- INDOOR -->
+        <div class="category-block" data-category="indoor">
+            <h2 class="text-4xl sm:text-5xl font-display text-center mb-12 text-emerald-700">INDOOR GROWN</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up"
+                     data-name="Tart Pops" data-effects="Euphoria Sociable Uplifting" data-flavor="Sweet Earthy">
+                    <div class="overflow-hidden">
+                        <img src="Pop Tarts.jpg" alt="Tart Pops" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Tart Pops</h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R70/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Euphoria • Sociable • Uplifting</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Legendary hybrid. Sweet, earthy, euphoric punch. THC 18–24%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="100"
+                     data-name="GG4 Gorilla Glue" data-effects="Relaxed Sleepy Hungry" data-flavor="Earthy Pine">
+                    <div class="overflow-hidden">
+                        <img src="GG4.jpg" alt="GG4" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">GG4 (Gorilla Glue)</h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R70/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Relaxed • Sleepy • Hungry</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Potent hybrid with heavy relaxation and sticky resin. THC 18–32%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="400"
+                     data-name="Jamaican Gold" data-effects="Energizing creative sociable" data-flavor="Fruity Sweet">
+                    <div class="overflow-hidden">
+                        <img src="JamaicanGold.jpg" alt="BlueBerry" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Jamaican Gold</h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R80/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Energizing • Creative • Sociable</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Tropical sativa with sweet, fruity, and earthy flavors, delivering a smooth and uplifting high. THC 18–23%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="200"
+                     data-name="Peyote Cookies" data-effects="Relaxed Tingly Euphoric" data-flavor="Vanilla Coffee">
+                    <div class="overflow-hidden">
+                        <img src="Peyote cookies.jpg" alt="Peyote Cookies" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Peyote Cookies</h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R90/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Relaxed • Tingly • Euphoric</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Sweet earthy aroma with vanilla & coffee notes. THC 20–26%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="300"
+                     data-name="BlockBerry" data-effects="Giggly Creative Euphoric" data-flavor="Berry Sweet">
+                    <div class="overflow-hidden">
+                        <img src="Block Berry.jpg" alt="BlockBerry" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">BlockBerry</h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R90/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Giggly • Creative • Euphoric</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Sweet berry aroma, calming euphoric high. THC 22–28%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="400"
+                     data-name="BlueBerry" data-effects="Happy Relaxed Sleepy" data-flavor="Blueberry Sweet">
+                    <div class="overflow-hidden">
+                        <img src="Blueberry.jpg" alt="BlueBerry" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">BlueBerry</h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R90/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Happy • Relaxed • Sleepy</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Classic indica-dominant with sweet blueberry flavor. THC 17–24%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- GREENHOUSE & OUTDOOR -->
+        <div class="category-block" data-category="greenhouse">
+            <h2 class="text-4xl sm:text-5xl font-display text-center mb-12 text-emerald-700">GREENHOUSE & OUTDOOR GROWN</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up"
+                     data-name="Big Foot" data-effects="Relaxed Focused Peaceful" data-flavor="Earthy Pine">
+                    <div class="overflow-hidden">
+                        <img src="bigfoot.jpg" alt="Big Foot" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Big Foot</h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R15/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Relaxed • Focused • Peaceful</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Indica-dominant with sweet earthy pine flavors. THC 20–25%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="100"
+                     data-name="Superman" data-effects="Tingly Relaxed Fruity" data-flavor="Fruity Skunk">
+                    <div class="overflow-hidden">
+                        <img src="superman.jpg" alt="Superman" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Superman</h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R20/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Tingly • Relaxed • Fruity</p>
+                        <p class="text-gray-600 text-sm leading-relaxed"> Hash-balanced hybrid with sweet fruity skunk notes. THC 18–23%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="200"
+                     data-name="Cream Cake" data-effects="Tingly Relaxed Fruity" data-flavor="Vanilla Creamy">
+                    <div class="overflow-hidden">
+                        <img src="Cream cake.jpg" alt="Cream Cake" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Cream Cake</h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R30/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Tingly • Relaxed • Fruity</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Creamy vanilla hybrid with relaxing body effects. THC 18–23%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="200"
+                     data-name="Sour Cheese" data-effects="Stress-Relief Relaxation Euphoria" data-flavor="tangy ">
+                    <div class="overflow-hidden">
+                        <img src="Sourcheese.jpg" alt="Cream Cake" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Sour Cheese</h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R30/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Stress-Relief • Relaxation • Euphoria</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Pungent, tangy hybrid with sharp cheesy and earthy flavors, delivering a strong, balanced high. THC 20–25%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="100"
+                     data-name="lemonberry" data-effects="Creative Uplifting Fruity" data-flavor="Sweet Skunk">
+                    <div class="overflow-hidden">
+                        <img src="lemonberry.jpg" alt="Superman" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Lemon berry</h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R30/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Creative • Uplifting • Mood-Booster</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Sativa-leaning hybrid with sweet lemon-berry flavors, giving an uplifting, energetic, and mood-boosting high. THC 18–24%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="100"
+                     data-name="Block C Cream" data-effects="Mellow Relaxed Relaxation" data-flavor="Earthy Smooth ">
+                    <div class="overflow-hidden">
+                        <img src="BlockCCream.jpg" alt="Superman" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Block C Cream</h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R35/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Relaxation • Peaceful • Light Euphoria,</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Indica-leaning hybrid with smooth creamy-earthy flavors, a relaxing, mood-lifting, and stress-melting high. THC 20–26%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="100"
+                     data-name="Platinum Ice" data-effects="Euphoria Stress relief Relaxation" data-flavor="Minty Smooth ">
+                    <div class="overflow-hidden">
+                        <img src="PLatinumIce.jpg" alt="Superman" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Platinum Ice</h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R40/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Deep Relaxation • Uplifting • Strong Euphoria,</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Frosty, potent hybrid with cool minty-sweet flavors, delivering a powerful yet balanced high. THC 22–26%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="100"
+                     data-name="Sunset Sherbit" data-effects="Euphoria Mood-Booster Relaxation" data-flavor="Earthy Fruity ">
+                    <div class="overflow-hidden">
+                        <img src="SunsetSherbit.jpg" alt="Superman" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Sunset Sherbit </h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R40/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Mood-Booster • Mellow • Light Euphoria</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Sweet, fruity hybrid with creamy berry and citrus notes, flavorful and uplifting high. THC 20–27%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="100"
+                     data-name="Rainbow Runtz" data-effects="Euphoria Mood-Booster Creative" data-flavor="Candy Smooth ">
+                    <div class="overflow-hidden">
+                        <img src="RainbowRuntz.jpg" alt="Superman" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Rainbow Runtz </h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R45/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Mood-Booster • Creative • Euphoria</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Fruity, candy-like hybrid with sweet citrus and berry flavors, offering a fun, uplifting, and energetic high. THC 20–24%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="100"
+                     data-name="Lemon Tree" data-effects="Uplifting Mood-Booster Creative" data-flavor="Fruity  ">
+                    <div class="overflow-hidden">
+                        <img src="Lemontree.jpg" alt="Superman" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Lemon Tree </h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R45/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Uplifting • Creative • Energetic</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Citrus-forward sativa-dominant hybrid with bright lemon and sweet herbal notes, delivering a lively and refreshing high. THC 19–25%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="100"
+                     data-name="Blue Unicorn" data-effects="Relaxation Mood-Booster Euphoria" data-flavor="Sweet  ">
+                    <div class="overflow-hidden">
+                        <img src="BlueUnicorn.jpg" alt="Superman" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Blue Unicorn  </h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R50/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Relaxation • Mood-Booster • Euphoria</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Sweet, fruity hybrid with blueberry and creamy vanilla notes, delivering a smooth and balanced high. THC 20–26%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="100"
+                     data-name="Miracle Butter" data-effects="Relaxation Mood-Booster Euphoria" data-flavor="Tangy Sweet Earthy  ">
+                    <div class="overflow-hidden">
+                        <img src="MircaleButter.jpg" alt="Superman" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Miracle Butter  </h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R50/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Relaxation • Mood-Booster • Euphoria</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Rich, buttery-flavored hybrid with sweet earthy undertones, delivering a smooth and comforting high. THC 21–27%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="100"
+                     data-name="London Cake" data-effects="Relaxation Mood-Booster Euphoria" data-flavor="Sweet  ">
+                    <div class="overflow-hidden">
+                        <img src="londoncake.jpg" alt="Superman" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">London Cake  </h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R50/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Relaxation • Mood-Booster • Euphoria</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Sweet, dessert-like hybrid with rich vanilla and earthy flavors, delivering a smooth and indulgent high. THC 22–28%</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="100"
+                     data-name="Strawberry Cough" data-effects="Energizing Mood-Booster Creative" data-flavor="Sweet  ">
+                    <div class="overflow-hidden">
+                        <img src="Strawberrycough.jpg" alt="Superman" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Strawberry Cough  </h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R50/G</p>
+                        <p class="text-sm text-gray-500 mb-2">Energizing • Mood-Booster • Creative</p>
+                        <p class="text-gray-600 text-sm leading-relaxed">Sweet, fruity sativa with fresh strawberry flavors, delivering a smooth and uplifting high. THC 19–24%</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-gray-400 py-16 mt-24">
+        <div class="max-w-7xl mx-auto text-center px-6">
+            <p class="text-4xl font-display text-white mb-4">BRACKENHURST</p>
+            <p class="mb-2 text-lg">© 2025 The Hood Bud. All rights reserved.</p>
+            <p class="text-sm">21+ only • For use only by adults 21 and older • Keep out of reach of children</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true, offset: 80 });
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // FULL FILTER + SEARCH SYSTEM
+        const searchInput = document.getElementById('strainSearch');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const categoryBlocks = document.querySelectorAll('.category-block');
+        const cards = document.querySelectorAll('.strain-card');
+        const noResults = document.getElementById('noResults');
+        let activeFilter = 'all';
+
+        function applyFilters() {
+            const query = searchInput.value.toLowerCase().trim();
+            let visible = 0;
+
+            // Show/hide entire category blocks
+            categoryBlocks.forEach(block => {
+                const category = block.dataset.category;
+                block.style.display = (activeFilter === 'all' || activeFilter === category) ? 'block' : 'none';
+            });
+
+            // Filter individual cards
+            cards.forEach(card => {
+                const inVisibleBlock = card.closest('.category-block').style.display !== 'none';
+                const name = (card.dataset.name || '').toLowerCase();
+                const effects = (card.dataset.effects || '').toLowerCase();
+                const flavor = (card.dataset.flavor || '').toLowerCase();
+                const matchesSearch = name.includes(query) || effects.includes(query) || flavor.includes(query);
+
+                if (inVisibleBlock && matchesSearch) {
+                    card.style.display = '';
+                    visible++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            noResults.classList.toggle('block', visible === 0);
+            noResults.classList.toggle('no-results', visible > 0);
+        }
+
+        // Filter button clicks
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('filter-active'));
+                btn.classList.add('filter-active');
+                activeFilter = btn.dataset.filter;
+                applyFilters();
+            });
+        });
+
+        // Search input
+        searchInput.addEventListener('input', applyFilters);
+
+        // Run on load
+        applyFilters();
+    </script>
+</body>
+</html>
