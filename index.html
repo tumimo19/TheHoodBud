@@ -31,13 +31,22 @@
             min-height: 600px; 
         }
 
-        .hero-bg {
-            background-image:  
-                             url('IMG_3603.jpg');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-        }
+        /* REPLACE your current .hero-bg with this */
+.hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(rgba(0,0,0,0.78), rgba(0,0,0,0.45)), 
+                url('IMG_3603.jpg') center/cover no-repeat;
+    background-attachment: scroll;
+}
+@media (min-width: 1024px) {
+    .hero-bg {
+        background-attachment: fixed;
+    }
+}
+
+/* ADD this at the bottom of your <style> */
+img { max-width: 100% !important; display: block; height: auto; }
 
         nav, #mobile-menu { background-color: #000 !important; }
 
@@ -203,5 +212,6 @@
     </script>
 </body>
 </html>
+
 
 
