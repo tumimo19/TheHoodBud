@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vapes & Resins • The Hood Bud - Brackenhurst</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Text:ital@0;1&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        h1,h2,h3,h4,h5,.font-display { font-family: 'DM Serif Text', serif; letter-spacing: -0.5px; }
+        nav, #mobile-menu { background-color: #000 !important; }
+        * { -webkit-tap-highlight-color: transparent; }
+        .sticky { position: sticky; top: 5rem; z-index: 40; }
+        .no-results { display: none; }
+
+        /* Active filter button style - same as flower page */
+        .filter-active {
+            background-color: #065f46 !important;
+            color: white !important;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- NAVBAR -->
+    <nav class="fixed top-0 left-0 right-0 bg-black text-white z-50 shadow-2xl">
+        <div class="max-w-7xl mx-auto px-6 lg:px-8 flex justify-between items-center h-20">
+            <div class="text-3xl sm:text-4xl font-display font-medium text-emerald-500">THE HOOD BUD</div>
+            <div class="hidden md:flex space-x-8 lg:space-x-12">
+                <a href="index.html#home" class="font-medium hover:text-emerald-400 transition">Home</a>
+                <a href="index.html#products" class="font-medium hover:text-emerald-400 transition">Products</a>
+                <a href="index.html#gallery" class="font-medium hover:text-emerald-400 transition">Gallery</a>
+                <a href="index.html#location" class="font-medium hover:text-emerald-400 transition">Location</a>
+            </div>
+            <button id="mobile-menu-btn" class="md:hidden text-white p-2">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-black border-t border-gray-900 px-4 pt-4 pb-6 space-y-3">
+            <a href="index.html#home" class="block px-4 py-3 text-lg font-medium hover:bg-gray-900 hover:text-emerald-400 rounded-lg transition">Home</a>
+            <a href="index.html#products" class="block px-4 py-3 text-lg font-medium hover:bg-gray-900 hover:text-emerald-400 rounded-lg transition">Products</a>
+            <a href="index.html#gallery" class="block px-4 py-3 text-lg font-medium hover:bg-gray-900 hover:text-emerald-400 rounded-lg transition">Gallery</a>
+            <a href="index.html#location" class="block px-4 py-3 text-lg font-medium hover:bg-gray-900 hover:text-emerald-400 rounded-lg transition">Location</a>
+        </div>
+    </nav>
+
+    <!-- HERO + SEARCH BAR -->
+    <section class="pt-32 pb-16 text-center bg-gradient-to-b from-gray-50 to-white">
+        <div class="max-w-7xl mx-auto px-6">
+            <h1 class="text-5xl sm:text-6xl md:text-7xl font-display mb-6">Vapes & Resins</h1>
+            <h1 class="text-xl text-gray-600 max-w-2xl mx-auto mb-10">Full-spectrum carts • Live resin • Disposables • Pure flavor, zero hassle</h1>
+
+            <!-- SEARCH BAR -->
+            <div class="max-w-2xl mx-auto relative">
+                <input 
+                    type="text" 
+                    id="strainSearch" 
+                    placeholder="Search product name, brand, flavor..." 
+                    class="w-full px-6 py-5 pr-14 text-lg rounded-full border-2 border-gray-300 shadow-lg focus:outline-none focus:border-emerald-500 focus:ring-4 focus:ring-emerald-200 transition"
+                >
+                <div class="absolute right-5 top-1/2 transform -translate-y-1/2 pointer-events-none">
+                    <svg class="w-8 h-8 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </div>
+            </div>
+
+            <!-- FILTER BUTTONS -->
+            <div class="flex justify-center gap-4 mt-10 flex-wrap">
+                <button class="filter-btn filter-active px-8 py-4 rounded-full bg-emerald-700 text-white font-semibold text-lg shadow-lg transition hover:bg-emerald-800" data-filter="all">All Products</button>
+                <button class="filter-btn px-8 py-4 rounded-full bg-gray-200 text-gray-800 font-semibold text-lg shadow-lg transition hover:bg-emerald-700 hover:text-white" data-filter="vapes">Vapes</button>
+            </div>
+
+            <!-- No results message -->
+            <p id="noResults" class="mt-10 text-2xl text-gray-500 no-results">No products found...</p>
+        </div>
+    </section>
+
+    <!-- STICKY NOTICE -->
+    <div class="sticky bg-gray-50 border-b border-gray-200 shadow-md">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="flex flex-wrap justify-center gap-6 py-5 text-lg font-medium">
+                <h1 class="">IN-STORE | STOCKS ARE LIMITED.</h1>
+            </div>
+        </div>
+    </div>
+
+    <section class="py-16 max-w-7xl mx-auto px-6 space-y-24">
+
+        <!-- VAPES CATEGORY -->
+        <div class="category-block" data-category="vapes">
+            <h2 class="text-4xl sm:text-5xl font-display text-center mb-12 text-emerald-700">VAPES</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10">
+
+                <!-- Example cards - add as many as you want -->
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up"
+                     data-name="Green Crack" data-effects="Relaxed Happy" data-flavor=" sweet">
+                    <div class="overflow-hidden">
+                        <img src="greencrackvape.jpg" alt="Zereal Milk 2g" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Green Crack • 1ml </h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R450</p>
+                        <p class="text-sm text-gray-500 mb-2">Sharp, fruity sativa with mango–citrus flavors, delivering a fast-hitting, energetic, and uplifting high.</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="100"
+                     data-name="Zkittles Disposable" data-effects="Indica Creative" data-flavor="berry sweet">
+                    <div class="overflow-hidden">
+                        <img src="zkittless.jpg" alt="Blue Dream 2g" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Zkittles • 1ml </h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R450</p>
+                        <p class="text-sm text-gray-500 mb-2">Sweet, tropical indica-dominant hybrid with candy-like fruit flavors, delivering a smooth and flavorful high.</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="200"
+                     data-name="Trainwreck " data-effects="Relaxed Sleepy" data-flavor="earthy pine">
+                    <div class="overflow-hidden">
+                        <img src="trainwreck.jpg" alt="GG4 Cart" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Trainwreck • 1ml </h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R450</p>
+                        <p class="text-sm text-gray-500 mb-2">Euphoria, creativity, energy boost, mood elevation, and a strong head high with mild body relaxation.</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="200"
+                     data-name="Northen Lightts " data-effects="Relaxed Sleepy" data-flavor="earthy pine">
+                    <div class="overflow-hidden">
+                        <img src="northenlights.jpg" alt="GG4 Cart" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Northen Lights • 1ml </h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R450</p>
+                        <p class="text-sm text-gray-500 mb-2">Classic indica with sweet pine, earthy, and spicy notes, delivering a smooth, deeply soothing high.</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="200"
+                     data-name="OG Kush Lightts " data-effects="Relaxed Sleepy" data-flavor="earthy pine">
+                    <div class="overflow-hidden">
+                        <img src="northenlights.jpg" alt="GG4 Cart" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">OG Kush • 1ml </h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R450</p>
+                        <p class="text-sm text-gray-500 mb-2">Classic indica with sweet pine, earthy, and spicy notes, delivering a smooth, deeply soothing high.</p>
+                    </div>
+                </div>
+
+                <div class="strain-card group bg-white rounded-2xl overflow-hidden shadow-xl hover:shadow-2xl transition-all duration-500" data-aos="fade-up" data-aos-delay="200"
+                     data-name="Purple Punch " data-effects="Relaxed Sleepy" data-flavor="earthy pine">
+                    <div class="overflow-hidden">
+                        <img src="purplepunch.jpg" alt="GG4 Cart" class="w-full h-64 object-cover group-hover:scale-110 transition duration-700">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-2xl font-display mb-2">Purple Punch • 1ml </h3>
+                        <p class="text-emerald-600 font-bold text-lg mb-3">R450</p>
+                        <p class="text-sm text-gray-500 mb-2">Sweet, dessert-like indica with grape, blueberry, and creamy vanilla flavors, delivering a smooth and flavorful high.</p>
+                    </div>
+                </div>
+
+                <!-- Add more vape products here -->
+
+            </div>
+        </div>
+
+       
+
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-black text-gray-400 py-16 mt-24">
+        <div class="max-w-7xl mx-auto text-center px-6">
+            <p class="text-4xl font-display text-white mb-4">BRACKENHURST</p>
+            <p class="mb-2 text-lg">© 2025 The Hood Bud. All rights reserved.</p>
+            <p class="text-sm">21+ only • For use only by adults 21 and older • Keep out of reach of children</p>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true, offset: 80 });
+
+        // Mobile menu toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            document.getElementById('mobile-menu').classList.toggle('hidden');
+        });
+
+        // FULL FILTER + SEARCH SYSTEM (identical to flower page)
+        const searchInput = document.getElementById('strainSearch');
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const categoryBlocks = document.querySelectorAll('.category-block');
+        const cards = document.querySelectorAll('.strain-card');
+        const noResults = document.getElementById('noResults');
+        let activeFilter = 'all';
+
+        function applyFilters() {
+            const query = searchInput.value.toLowerCase().trim();
+            let visible = 0;
+
+            // Show/hide category blocks
+            categoryBlocks.forEach(block => {
+                const category = block.dataset.category;
+                block.style.display = (activeFilter === 'all' || activeFilter === category) ? 'block' : 'none';
+            });
+
+            // Filter individual cards
+            cards.forEach(card => {
+                const inVisibleBlock = card.closest('.category-block').style.display !== 'none';
+                const name = (card.dataset.name || '').toLowerCase();
+                const effects = (card.dataset.effects || '').toLowerCase();
+                const flavor = (card.dataset.flavor || '').toLowerCase();
+                const matchesSearch = name.includes(query) || effects.includes(query) || flavor.includes(query);
+
+                if (inVisibleBlock && matchesSearch) {
+                    card.style.display = '';
+                    visible++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            noResults.classList.toggle('block', visible === 0);
+            noResults.classList.toggle('no-results', visible > 0);
+        }
+
+        // Filter button clicks
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => b.classList.remove('filter-active'));
+                btn.classList.add('filter-active');
+                activeFilter = btn.dataset.filter;
+                applyFilters();
+            });
+        });
+
+        // Live search
+        searchInput.addEventListener('input', applyFilters);
+
+        // Initial run
+        applyFilters();
+    </script>
+</body>
+</html>
